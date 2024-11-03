@@ -1,30 +1,36 @@
 Current development state:
 
+- [x] Completed
+- [ ] Unfinished
+- [ ] *Working on it*
+- [ ] ~~Temporarily not in development~~
+
 - [x] Enabling Eventsub for Beta users
-- [ ] Finish writing Docs (help, i don't wanna)
-- [ ] Start developing Skytrough
+- [ ] *Finish writing Docs (help, i don't wanna)*
+- [ ] *Start developing Skytrough*
 - [x] Give BenTwi a logo
-- [ ] Create some graphics for all over BenTwi's User Interface and Branding
-- [ ] Profile Stream game activitys
-- [ ] Add music widget support
+- [ ] *Create some graphics for all over BenTwi's User Interface and Branding*
+- [ ] *Profile Stream game activitys*
+- [ ] ~~Add music widget support~~
 - [ ] Push the frontend further
 - [ ] Create a docs page on domain
-- [ ] Get Discord server ready
-- [ ] Eat something
-- [ ] Drink water
+- [ ] ~~Get Discord server ready~~
+- [ ] ~~Eat something~~
+- [ ] ~~Drink water~~
 
 
 
 
-BenTwi.json Configuration
+### Chapter: BenTwi.json
 
 This JSON file is essential for BDK to function correctly. Place it either in your project’s root folder or the folder where you want to use BenTwi.
 Configuration Fields
-Overlay
 
+
+# Overlay // Canvas
 
 <details>
-<summary>Define your overlay's attributes:</summary>
+<summary>Define your canvas's attributes:</summary>
 
     artifact: A reverse DNS string used to identify and categorize the overlay.
     name: A human-readable name for your overlay, shown when editing.
@@ -32,7 +38,7 @@ Overlay
 
 </details>
 
-Connection
+# Connection
 
 <details>
 <summary>Settings for connecting BenTwi to your account:</summary>
@@ -43,7 +49,7 @@ Connection
 
 </details>
 
-Preferences
+# Preferences
 
 <details>
 <summary>Customize how BenTwi handles connectivity issues:</summary>
@@ -56,15 +62,7 @@ Preferences
 
 
 
-
-
-
-
-
-
-
-Chapter: Runtime Environment Detection and Configuration
-Overview
+### Chapter: Runtime Environment Detection and Configuration Overview
 
 The initRuntime function initializes the runtime object, capturing critical information about the current operating environment. This configuration helps adapt behavior based on the platform or mode in use, such as OBS Studio, StreamElements, secure web, or localhost. The env variable classifies each environment into one of three categories: development, sec_development, and operating. These categories streamline functionality and debugging by identifying each environment's role and requirements.
 Environments and Configurations
@@ -122,7 +120,7 @@ Environments and Configurations
 
 </details>
 
-Usage Example
+# Usage Example
 
 This configuration helps developers easily distinguish between testing, development, and production environments. Each runtime is dynamically set based on the platform, enabling optimized behavior for the relevant environment.
 
