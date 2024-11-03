@@ -1,0 +1,10 @@
+Proposed Architecture Split
+
+    Main-A: Primary backend, managing all external API data flow. Serves as the main processing unit.
+    Main-B: Secondary backend, with the same tasks as Main-A, but only activated if Main-A goes down, serving as a fallback.
+    Main-C: Development backend, identical responsibilities to Main-A but used for testing before deploying updates.
+    Frontend: Manages the dashboard interface for users.
+    API: Independently manages BenTwi API requests.
+    Bots: Manages the Discord [Skytrough + Support] & Twitch bots.
+    Database-A: Primary database, storing the full infrastructure data for BenTwi.
+    Database-B: Backup database, saving the current state of Database-A every 3 hours.
