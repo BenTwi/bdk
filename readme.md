@@ -1,9 +1,11 @@
-Current development state:
+Quick access to finish the docs some day, jesus christ
 
 - [x] Completed
 - [ ] Unfinished
 - [ ] *Working on it*
 - [ ] ~~Temporarily not in development~~
+
+Current development state:
 
 - [x] Enabling Eventsub for Beta users
 - [ ] *Finish writing Docs (help, i don't wanna)*
