@@ -131,5 +131,5 @@ This configuration helps developers easily distinguish between testing, developm
 ```javascript
 console.log(runtime);
 // Output will vary based on the environment in which `initRuntime()` is executed.
-//Examples can be found above
+// Examples can be found above
 ```
