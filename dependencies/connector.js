@@ -6,6 +6,7 @@ BENTWI.connector = {
     connect: (remote) => {
         BENTWI.connector.socket = new WebSocket(remote);
         BENTWI.connector.socketController(BENTWI.connector.socket)
+        log("warn", "Connecting to backend with domain: " + remote, "DEBUG")
     },
     reconnect: (after) => {
 
@@ -32,8 +33,13 @@ BENTWI.connector = {
 
     socketController: (socket) => {
 
-        socket.onopen(() => {
-            log("warn", "Connection to Backend established", "DEBUG")
+        if(!socket){
+            log("error", "socektController didn't receive an socket object", "CONNECTOR")
+            return;
+        }
+
+        socket.addEventListener("open", () => {
+            log("warn", "Connection to backend established", "DEBUG")
         })
 
     }
