@@ -4,9 +4,14 @@ let lastSession;
 BENTWI.connector = {
 
     connect: (remote) => {
-        BENTWI.connector.socket = new WebSocket(remote);
-        BENTWI.connector.socketController(BENTWI.connector.socket)
-        log("warn", "Connecting to backend with domain: " + remote, "DEBUG")
+        if(BENTWI.config){
+            BENTWI.connector.socket = new WebSocket(remote + `?token=${BENTWI.config.connection.token}&version=${BENTWI.config.connection.version}`);
+            BENTWI.connector.socketController(BENTWI.connector.socket)
+            log("warn", "Connecting to backend with domain: " + remote, "DEBUG")
+        } else {
+            log("warn", "Delayed connecting task because BenTwi.json isn't set yet");
+            BENTWI.connector.connect(remote);
+        }
     },
     reconnect: (after) => {
 
