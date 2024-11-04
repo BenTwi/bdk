@@ -14,7 +14,8 @@
 
 let domains;
 let BENTWI = {
-    useLocal: true
+    useLocal: true,
+    config: {}
 };
 
 
