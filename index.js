@@ -19,7 +19,7 @@ let domains;
 
 function loadDependencys(){
 
-    const dependencys = ['logger', 'utils', 'connector', 'mappings', 'runtimes']
+    const dependencys = ['logger', 'mappings', 'runtimes', 'utils', 'connector']
 
         // Replace ./data.json with your JSON feed
     fetch('https://bentwi.skykopf.com/dev-kit/config/domains.json').then(response => {
@@ -44,7 +44,7 @@ function loadDependencys(){
 
     })
 
-    setTimeout(initRuntime, 500)
+    setTimeout(initRuntime, 1500)
 
 }
 
