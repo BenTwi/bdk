@@ -39,7 +39,20 @@ BENTWI.connector = {
         }
 
         socket.addEventListener("open", () => {
-            log("warn", "Connection to backend established", "DEBUG")
+            log("warn", "BenTwi established a connection to the Backend", "CONNECTOR")
+        })
+
+        socket.addEventListener("close", () => {
+            log("warn", "BenTwi's connection to the backend was closed", "CONNECTOR")
+        })
+
+        socket.addEventListener("error", (err) => {
+            log("warn", "BenTwi backend connection got an error: " + JSON.stringify(err), "CONNECTOR")
+        })
+
+        socket.addEventListener("message", (message) => {
+            log("warn", "BenTwi received an message from the backend: ", "DEBUG")
+            console.log(message)
         })
 
     }
