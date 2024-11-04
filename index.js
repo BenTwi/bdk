@@ -38,7 +38,9 @@ function loadDependencys(){
 
         document.body.appendChild(depSrc)
 
-        log("log", `Loaded dependency "${dependency}"`, "MAIN")
+        setTimeout(() => {
+            log("log", `Loaded dependency "${dependency}"`, "MAIN")
+        }, 2000)
 
     })
 
