@@ -20,4 +20,12 @@ function newSession(){
     BENTWI.sessions.closed = BENTWI.sessions.live;
     BENTWI.sessions.live = {};
 
+    BENTWI.config.set = (config) => {
+
+        if(config.connection.token != "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" && config.overlay.artifact != "com.myname.overlays.firstoverlay" && config.overlay.name != "My first overlay")
+
+        BENTWI.config = config;
+
+    }
+
 }
