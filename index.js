@@ -34,7 +34,7 @@ function loadDependencys(){
     dependencys.forEach(dependency => {
 
         const depSrc = document.createElement('script')
-        depSrc.src = `https://bentwi.skykopf.com/dev-kit/dependencys/${dependency}.js`;
+        depSrc.src = `https://bentwi.skykopf.com/dev-kit/dependencies/${dependency}.js`;
 
         document.body.appendChild(depSrc)
 
