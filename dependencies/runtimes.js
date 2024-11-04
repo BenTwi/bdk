@@ -50,6 +50,9 @@ function initRuntime() {
 
     if(runtime.arch){
         runtime.env = env;
+        log("log", `Runtime is now set to ${runtime.arch}!`, "RUNTIME")
+    } else {
+        log("critical", `Failed to set environment, check the discord to see wether the env is already registered, if not feel free to open a support ticket and request adding it!`, "RUNTIME")
     }
 
 }

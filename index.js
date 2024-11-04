@@ -27,7 +27,7 @@ function loadDependencys(){
     }).then(data => {
         log("log", "Successfully loaded domains", "MAIN")
     }).catch(err => {
-        // Do something for an error here
+        log("critical", `Cannot load domains from backend server: ${JSON.stringify(err)}`, "MAIN")
     });
 
 
@@ -43,6 +43,8 @@ function loadDependencys(){
         }, 2000)
 
     })
+
+    setTimeout(initRuntime, 500)
 
 }
 
