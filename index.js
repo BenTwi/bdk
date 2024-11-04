@@ -12,8 +12,6 @@
 
 
 
-let socket;
-let BackendWasConnected = false;
 let domains;
 let BENTWI = {
     useLocal: true
@@ -22,13 +20,13 @@ let BENTWI = {
 
 function loadDependencys(){
 
-    const dependencys = ['logger', 'mappings', 'runtimes', 'utils', 'connector']
+    const dependencys = ['logger', 'mappings', 'runtimes', 'utils', 'sessionControll', 'connector']
 
-        // Replace ./data.json with your JSON feed
     fetch('https://bentwi.skykopf.com/dev-kit/config/domains.json').then(response => {
         return response.json();
     }).then(data => {
         log("log", "Successfully loaded domains", "MAIN")
+        BENTWI.domains = data;
     }).catch(err => {
         log("critical", `Cannot load domains from backend server: ${JSON.stringify(err)}`, "MAIN")
     });
@@ -50,6 +48,7 @@ function loadDependencys(){
     setTimeout(() => {
         initENV()
         setTimeout(loadBenTwiDotJSON, 1000)
+        setTimeout(newSession, 2000)
     }, 3500)
 
 }
@@ -70,6 +69,7 @@ function loadBenTwiDotJSON(){
             return response.json();
         }).then(data => {
             log("log", "Loaded BenTwi.json in Inline mode", "MAIN")
+            BENTWI.config = data;
         }).catch(err => {
             log("critical", `Cannot load bentwi default from backend server: ${JSON.stringify(err)}`, "MAIN")
         });
@@ -80,10 +80,10 @@ function loadBenTwiDotJSON(){
 
 function setInlineBenTwiConfig(val){
     if(val == true || val == false){
-    BENTWI.useLocal = !val
-} else {
-    log("error", `setInlineBenTwiConfig() needs an boolean of true or false instead of ${val}`, "MAIN")
-}
+        BENTWI.useLocal = !val
+    } else {
+        log("error", `setInlineBenTwiConfig() needs an boolean of true or false instead of ${val}`, "MAIN")
+    }
 }
 
 setTimeout(loadDependencys, 500)

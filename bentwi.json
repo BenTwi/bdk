@@ -14,7 +14,8 @@
     },
 
     "preferences": {
-        "auto_reconnect_on_connection_loss": true
+        "auto_reconnect_on_connection_loss": true,
+        "debug": false
     }
 
 }
