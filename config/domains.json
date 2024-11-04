@@ -2,6 +2,6 @@
 
     "frontend": "https://bentwi.skykopf.com",
     "api": "https://bentwi.skykopf.com/api/",
-    "socket": "https://bentwi.skykopf.com/"
+    "socket": "wss://bentwi.skykopf.com:25999/"
 
 }
