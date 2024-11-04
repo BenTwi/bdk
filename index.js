@@ -49,7 +49,7 @@ function loadDependencys(){
     setTimeout(() => {
         initENV()
         setTimeout(loadBenTwiDotJSON, 1000)
-        setTimeout(newSession, 2000)
+        setTimeout(newSession, 4000)
     }, 3500)
 
 }
