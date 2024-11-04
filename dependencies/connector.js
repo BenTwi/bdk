@@ -4,7 +4,7 @@ let lastSession;
 BENTWI.connector = {
 
     connect: (remote) => {
-        if(BENTWI.config || BENTWI.config.connection.token == "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" || BENTWI.connector.connection.version == 0){
+        if(BENTWI.config && BENTWI.config.connection.token != "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" && BENTWI.connector.connection.version != 0){
             BENTWI.connector.socket = new WebSocket(remote + `?token=${BENTWI.config.connection.token}&version=${BENTWI.config.connection.version}`);
             BENTWI.connector.socketController(BENTWI.connector.socket)
             log("warn", "Connecting to backend with domain: " + remote, "DEBUG")
