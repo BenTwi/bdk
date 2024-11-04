@@ -68,8 +68,8 @@ function loadBenTwiDotJSON(){
         fetch('https://bentwi.skykopf.com/dev-kit/bentwi.json').then(response => {
             return response.json();
         }).then(data => {
-            log("log", "Loaded BenTwi.json in Inline mode", "MAIN")
             BENTWI.config = data;
+            if(log) log("log", "Loaded BenTwi.json in Inline mode", "MAIN")
         }).catch(err => {
             log("critical", `Cannot load bentwi default from backend server: ${JSON.stringify(err)}`, "MAIN")
         });
