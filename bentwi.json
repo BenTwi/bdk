@@ -9,7 +9,7 @@
 
     "connection": {
         "token": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-        "version": 1,
+        "version": 0,
         "spotify": "last.fm/spotify username | NOT IMPLEMENTED YET"
     },
 
