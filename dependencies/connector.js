@@ -49,6 +49,10 @@ BENTWI.connector = {
 
         socket.addEventListener("close", () => {
             log("warn", "BenTwi's connection to the backend was closed", "CONNECTOR")
+                if(BENTWI.config.preferences.auto_reconnect_on_connection_loss){
+                    log("warn", "BenTwi will try to reconnect!")
+                    BENTWI.connector.reconnect(5)
+                }
         })
 
         socket.addEventListener("error", (err) => {

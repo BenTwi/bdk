@@ -8,6 +8,17 @@ BENTWI.sessions = {
 
 function newSession(){
 
+    BENTWI.config.set = (config) => {
+
+        if(config.connection.token != "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" && config.overlay.artifact != "com.myname.overlays.firstoverlay" && config.overlay.name != "My first overlay"){
+            BENTWI.config = config;
+        } else {
+            log("error", "Config wasn't able to be set because either token, artifact or name was not set!", "SESSION")
+            return;
+        }
+    
+    }
+
     if(!BENTWI.sessions.independent.BackendWasConnected){
         log('log', 'Welcome! BenTwi is initzilizing its session, this should not take any longer than 5 seconds! :P', 'SESSION')
         BENTWI.connector.connect(BENTWI.domains.socket)
@@ -19,13 +30,5 @@ function newSession(){
 
     BENTWI.sessions.closed = BENTWI.sessions.live;
     BENTWI.sessions.live = {};
-
-    BENTWI.config.set = (config) => {
-
-        if(config.connection.token != "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" && config.overlay.artifact != "com.myname.overlays.firstoverlay" && config.overlay.name != "My first overlay")
-
-        BENTWI.config = config;
-
-    }
 
 }
