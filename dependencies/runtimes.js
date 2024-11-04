@@ -1,7 +1,7 @@
 var runtime = {};
 var env = 'development';
 
-function initRuntime() {
+async function initRuntime() {
     if (window.obsstudio) {
         runtime = {
             arch: "OBS_STUDIO",
@@ -9,7 +9,7 @@ function initRuntime() {
         };
         env = 'operating';
     } else if (typeof SE_API !== "undefined") {
-        const SE = SE_API.getOverlayStatus();
+        const SE = await SE_API.getOverlayStatus();
         runtime = {
             arch: "STREAMELEMENTS",
             editorMode: SE.isEditorMode,

@@ -45,9 +45,7 @@ function loadDependencys(){
     })
 
     setTimeout(() => {
-
         initRuntime()
-
     }, 3500)
 
 }
