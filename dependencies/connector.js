@@ -51,9 +51,15 @@ BENTWI.connector = {
         })
 
         socket.addEventListener("message", (message) => {
-            log("warn", "BenTwi received an message from the backend: ", "DEBUG")
-            console.log(message)
+            BENTWI.connector.messageHandler(message.data)            
         })
+
+    },
+
+    messageHandler: (message) => {
+
+        log("warn", "BenTwi received an message from the backend: ", "DEBUG")
+        console.log(message)
 
     }
 
