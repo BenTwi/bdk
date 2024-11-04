@@ -43,3 +43,5 @@ function loadDependencys(){
     })
 
 }
+
+setTimeout(loadDependencys, 500)
