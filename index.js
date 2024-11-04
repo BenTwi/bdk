@@ -19,7 +19,7 @@ let domains;
 
 function loadDependencys(){
 
-    const dependencys = ['connector', 'utils', 'logger', 'mappings', 'runtimes']
+    const dependencys = ['logger', 'utils', 'connector', 'mappings', 'runtimes']
 
         // Replace ./data.json with your JSON feed
     fetch('https://bentwi.skykopf.com/dev-kit/config/domains.json').then(response => {
