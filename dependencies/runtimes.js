@@ -1,24 +1,24 @@
-var runtime = {};
+BENTWI.environment = {};
 var env = 'development';
 
-async function initRuntime() {
+async function initENV() {
     if (window.obsstudio) {
-        runtime = {
+        BENTWI.environment = {
             arch: "OBS_STUDIO",
             version: window.obsstudio.version
         };
         env = 'operating';
     } else if (typeof SE_API !== "undefined") {
         const SE = await SE_API.getOverlayStatus();
-        runtime = {
+        BENTWI.environment = {
             arch: "STREAMELEMENTS",
             editorMode: SE.isEditorMode,
             muted: SE.muted,
         };
-        if(runtime.editorMode) { env = 'development'; } else { env = 'operating'; }
+        if(BENTWI.environment.editorMode) { env = 'development'; } else { env = 'operating'; }
     } else if (location.protocol === "https:") {
-        runtime = {
-            ...runtime,
+        BENTWI.environment = {
+            ...BENTWI.environment,
             arch: "WEB_SECURE",
             secure: true,
             hostname: location.hostname,
@@ -27,8 +27,8 @@ async function initRuntime() {
         };
         env = 'operating';
     } else if (location.host === "localhost") {
-        runtime = {
-            ...runtime,
+        BENTWI.environment = {
+            ...BENTWI.environment,
             arch: "LOCALHOST",
             secure: false,
             hostname: "localhost",
@@ -37,8 +37,8 @@ async function initRuntime() {
         };
         env = 'sec_development';
     } else {
-        runtime = {
-            ...runtime,
+        BENTWI.environment = {
+            ...BENTWI.environment,
             arch: "WEB_UNSECURE",
             secure: false,
             hostname: location.hostname,
@@ -48,9 +48,9 @@ async function initRuntime() {
         env = 'development';
     }
 
-    if(runtime.arch){
-        runtime.env = env;
-        log("log", `Runtime is now set to ${runtime.arch}!`, "RUNTIME")
+    if(BENTWI.environment.arch){
+        BENTWI.environment.env = env;
+        log("log", `Runtime is now set to ${BENTWI.environment.arch}!`, "RUNTIME")
     } else {
         log("critical", `Failed to set environment, check the discord to see wether the env is already registered, if not feel free to open a support ticket and request adding it!`, "RUNTIME")
     }
