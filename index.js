@@ -69,7 +69,7 @@ function loadBenTwiDotJSON(){
             return response.json();
         }).then(data => {
             BENTWI.config = data;
-            document.title = `${data.overlay.name} | BenTwi`
+            MAPPING_title = `${data.overlay.name} | BenTwi`
             if(log) log("log", "Loaded BenTwi.json in Inline mode", "MAIN")
         }).catch(err => {
             log("critical", `Cannot load bentwi default from backend server: ${JSON.stringify(err)}`, "MAIN")
