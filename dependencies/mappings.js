@@ -1,2 +1,3 @@
 // General document querys for quick-access
-const body = document.body;
+const MAPPING_body = document.body;
+const MAPPING_title = document.title;
