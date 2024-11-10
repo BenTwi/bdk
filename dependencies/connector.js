@@ -28,7 +28,7 @@ BENTWI.connector = {
     
         setTimeout(() => {
     
-            connect()
+            BENTWI.connector.connect(BENTWI.domains.socket)
     
         }, after)
     
