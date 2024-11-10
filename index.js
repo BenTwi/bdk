@@ -23,16 +23,6 @@ function loadDependencys(){
 
     const dependencys = ['logger', 'mappings', 'runtimes', 'utils', 'sessionControll', 'connector']
 
-    fetch('https://bentwi.skykopf.com/dev-kit/config/domains.json').then(response => {
-        return response.json();
-    }).then(data => {
-        log("log", "Successfully loaded domains", "MAIN")
-        BENTWI.domains = data;
-    }).catch(err => {
-        log("critical", `Cannot load domains from backend server: ${JSON.stringify(err)}`, "MAIN")
-    });
-
-
     dependencys.forEach(dependency => {
 
         const depSrc = document.createElement('script')
@@ -45,6 +35,15 @@ function loadDependencys(){
         }, 2500)
 
     })
+
+    fetch('https://bentwi.skykopf.com/dev-kit/config/domains.json').then(response => {
+        return response.json();
+    }).then(data => {
+        log("log", "Successfully loaded domains", "MAIN")
+        BENTWI.domains = data;
+    }).catch(err => {
+        log("critical", `Cannot load domains from backend server: ${JSON.stringify(err)}`, "MAIN")
+    });
 
     setTimeout(() => {
         initENV()
