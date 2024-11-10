@@ -9,7 +9,7 @@ BENTWI.connector = {
             BENTWI.connector.socketController(BENTWI.connector.socket)
             log("warn", "Connecting to backend with domain: " + remote, "DEBUG")
         } else {
-            log("warn", "Delayed connecting task because BenTwi.json isn't set yet - Delayed by 5s");
+            log("warn", "Delayed connecting task because BenTwi.json isn't set yet - Delayed by 5s", 'CONNECTOR');
             setTimeout(() => { BENTWI.connector.connect(remote); }, 5000)
         }
     },
