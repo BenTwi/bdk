@@ -64,8 +64,8 @@ BENTWI.connector = {
     },
 
     messageHandler: (message) => {
-        log("warn", "BenTwi received a message from the backend: ", "DEBUG")
-        console.log(message)
+        
+        var logWorth = false;
 
         // Parse message as JSON
         let parsedMessage;
@@ -92,6 +92,12 @@ BENTWI.connector = {
                 log("warn", "Received an unhandled message ID: " + parsedMessage.ID, "CONNECTOR")
                 break;
         }
+
+        if(logWorth){
+            log("warn", "BenTwi received a message from the backend: ", "DEBUG")
+            console.log(message)
+        }
+
     },
 
     sendMessage: (messageObj) => {
