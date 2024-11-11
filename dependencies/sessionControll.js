@@ -19,6 +19,10 @@ function newSession(){
     
     }
 
+    BENTWI.config.get = () => {
+        return BENTWI.sessions.live.config;
+    }
+
     if(!BENTWI.sessions.independent.BackendWasConnected){
         log('log', 'Welcome! BenTwi is initzilizing its session, this should not take any longer than 5 seconds! :P', 'SESSION')
         BENTWI.connector.connect(BENTWI.domains.socket)

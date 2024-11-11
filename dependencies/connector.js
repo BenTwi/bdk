@@ -1,6 +1,33 @@
 let session;
 let lastSession;
 
+BENTWI.events = {
+    events: {},
+
+    /**
+     * Register a callback to an event
+     * @param {string} event - Name of the event to listen to
+     * @param {function} callback - Function to call when the event is emitted
+     */
+    on: function(event, callback) {
+        if (!this.events[event]) {
+            this.events[event] = [];
+        }
+        this.events[event].push(callback);
+    },
+
+    /**
+     * Emit an event to trigger all registered callbacks
+     * @param {string} event - Name of the event to emit
+     * @param {...any} args - Arguments to pass to the callback functions
+     */
+    emit: function(event, ...args) {
+        if (this.events[event]) {
+            this.events[event].forEach(callback => callback(...args));
+        }
+    }
+};
+
 BENTWI.connector = {
 
     connect: (remote) => {
@@ -78,7 +105,10 @@ BENTWI.connector = {
 
         // Use switch statement to handle different message types by ID
         switch (parsedMessage.ID) {
-            case "OB2OF_PING":
+            case "OB2OF_CONFIG":
+
+            BENTWI.sessions.live.config = parsedMessage.DATA
+
                 break;
             case "OB2OF_PING":
                 // Respond with PONG message
