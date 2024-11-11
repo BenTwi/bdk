@@ -79,6 +79,8 @@ BENTWI.connector = {
         // Use switch statement to handle different message types by ID
         switch (parsedMessage.ID) {
             case "OB2OF_PING":
+                break;
+            case "OB2OF_PING":
                 // Respond with PONG message
                 BENTWI.connector.sendMessage({
                     ID: "OF2OB_PONG"

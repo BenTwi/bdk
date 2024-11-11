@@ -29,3 +29,13 @@ function rng(rndType, data){
     return giveBack;
 
 }
+
+
+function playsound(url, vol, pit){
+    if(!vol) vol = 1;
+    if(!pit) pit = 1;
+    let AUD = new Audio(url);
+    AUD.volume = vol;
+    AUD.pitch = pit;
+    AUD.play()
+  }
