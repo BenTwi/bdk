@@ -15,7 +15,12 @@
 let domains;
 let BENTWI = {
     useLocal: true,
-    config: {}
+    config: {},
+    versions: {
+        bdk: "v0.0",
+        backend: "v0.0",
+        frontend: "v0.0"
+    }
 };
 
 
