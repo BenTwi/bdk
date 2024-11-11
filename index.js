@@ -28,7 +28,7 @@ function loadDependencys(){
         const depSrc = document.createElement('script')
         depSrc.src = `https://bentwi.skykopf.com/dev-kit/dependencies/${dependency}.js`;
 
-        MAPPING_body.appendChild(depSrc)
+        document.body.appendChild(depSrc)
 
         setTimeout(() => {
             log("log", `Loaded dependency "${dependency}"`, "MAIN")
