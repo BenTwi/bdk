@@ -70,7 +70,7 @@ function loadBenTwiDotJSON(){
         return;
         log("log", "Loaded BenTwi.json in Local mode", "MAIN")
     } else {
-            log("log", "Fetching default BenTwi.json from Backend Server")
+            log("log", "Fetching default BenTwi.json from Backend Server", "MAIN")
         fetch('https://bentwi.skykopf.com/dev-kit/bentwi.json').then(response => {
             return response.json();
         }).then(data => {
