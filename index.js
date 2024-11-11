@@ -28,7 +28,7 @@ function loadDependencys(){
         const depSrc = document.createElement('script')
         depSrc.src = `https://bentwi.skykopf.com/dev-kit/dependencies/${dependency}.js`;
 
-        document.body.appendChild(depSrc)
+        MAPPING_body.appendChild(depSrc)
 
         setTimeout(() => {
             log("log", `Loaded dependency "${dependency}"`, "MAIN")
@@ -60,7 +60,7 @@ function loadBenTwiDotJSON(){
 
     if(BENTWI.useLocal){
         log("warn", "Hey! In this version BenTwi can't use a local BenTwi.json file.", "MAIN")
-        setInlineBenTwiConfig(true)
+        setInlineBenTwiConfig(false)
         setTimeout(loadBenTwiDotJSON, 1000)
         return;
         log("log", "Loaded BenTwi.json in Local mode", "MAIN")
@@ -81,7 +81,9 @@ function loadBenTwiDotJSON(){
 
 function setInlineBenTwiConfig(val){
     if(val == true || val == false){
+        console.log(`useLocal set to ${!val}`)
         BENTWI.useLocal = !val
+        console.log(BENTWI.useLocal)
     } else {
         log("error", `setInlineBenTwiConfig() needs an boolean of true or false instead of ${val}`, "MAIN")
     }
