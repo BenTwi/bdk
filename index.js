@@ -21,7 +21,7 @@ let BENTWI = {
 
 function loadDependencys(){
 
-    const dependencys = ['logger', 'mappings', 'runtimes', 'utils', 'sessionControll', 'connector']
+    const dependencys = ['logger', 'mappings', 'runtimes', 'utils', 'sessionControll', 'connector', 'version']
 
     dependencys.forEach(dependency => {
 
