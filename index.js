@@ -70,7 +70,6 @@ function loadBenTwiDotJSON(){
         return;
         log("log", "Loaded BenTwi.json in Local mode", "MAIN")
     } else {
-        if(!BENTWI.config){
             log("log", "Fetching default BenTwi.json from Backend Server")
         fetch('https://bentwi.skykopf.com/dev-kit/bentwi.json').then(response => {
             return response.json();
@@ -79,9 +78,11 @@ function loadBenTwiDotJSON(){
             MAPPING_title = `${data.overlay.name} | BenTwi`
             if(log) log("log", "Loaded BenTwi.json in Inline mode", "MAIN")
         }).catch(err => {
-            log("critical", `Cannot load bentwi default from backend server: ${JSON.stringify(err)}`, "MAIN")
+            err = JSON.stringify(err)
+            if(err == "{}") return;
+            log("critical", `Cannot load bentwi default from backend server: ${err}`, "MAIN")
         });
-    }
+    
     }
 
 }
