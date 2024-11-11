@@ -70,6 +70,8 @@ function loadBenTwiDotJSON(){
         return;
         log("log", "Loaded BenTwi.json in Local mode", "MAIN")
     } else {
+        if(!BENTWI.config){
+            log("log", "Fetching default BenTwi.json from Backend Server")
         fetch('https://bentwi.skykopf.com/dev-kit/bentwi.json').then(response => {
             return response.json();
         }).then(data => {
@@ -80,15 +82,14 @@ function loadBenTwiDotJSON(){
             log("critical", `Cannot load bentwi default from backend server: ${JSON.stringify(err)}`, "MAIN")
         });
     }
+    }
 
 }
 
 
 function setInlineBenTwiConfig(val){
     if(val == true || val == false){
-        console.log(`useLocal set to ${!val}`)
         BENTWI.useLocal = !val
-        console.log(BENTWI.useLocal)
     } else {
         log("error", `setInlineBenTwiConfig() needs an boolean of true or false instead of ${val}`, "MAIN")
     }
