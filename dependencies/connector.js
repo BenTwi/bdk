@@ -31,7 +31,7 @@ BENTWI.events = {
 BENTWI.connector = {
 
     connect: (remote) => {
-        if(BENTWI.config && BENTWI.config.connection.token != "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" && BENTWI.config.connection.version != 0){
+        if(BENTWI.config && BENTWI.config.connection && BENTWI.config.connection.token != "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"){
             BENTWI.connector.socket = new WebSocket(remote + `?token=${BENTWI.config.connection.token}&version=${BENTWI.config.connection.version}`);
             BENTWI.connector.socketController(BENTWI.connector.socket)
             log("warn", "Connecting to backend with domain: " + remote, "DEBUG")
