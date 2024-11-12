@@ -2,7 +2,7 @@ BENTWI.config.set = (config) => {
 
     if(config.connection.token != "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" && config.overlay.artifact != "com.myname.overlays.firstoverlay" && config.overlay.name != "My first overlay"){
         BENTWI.config = config;
-        updateDocumentTitle(`${BENTWI.config.overlay.name} | BenTwi`)
+        setTimeout(() => { updateDocumentTitle(`${BENTWI.config.overlay.name} | BenTwi`) }, 500)
     } else {
         log("error", "Config wasn't able to be set because either token, artifact or name was not set!", "SESSION")
         return;

@@ -108,7 +108,7 @@ BENTWI.connector = {
             case "OB2OF_CONFIG":
 
             BENTWI.sessions.live.config = parsedMessage.DATA
-
+            
                 break;
             case "OB2OF_PING":
                 // Respond with PONG message

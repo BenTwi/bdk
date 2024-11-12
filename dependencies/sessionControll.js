@@ -20,4 +20,6 @@ function newSession(){
     BENTWI.sessions.closed = BENTWI.sessions.live;
     BENTWI.sessions.live = {};
 
+    BENTWI.events.emit("ready")
+
 }
