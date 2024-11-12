@@ -38,7 +38,7 @@ BENTWI.connector = {
 
     socketController: (socket) => {
         if(!socket){
-            log("error", "socketController didn't receive a socket object", "CONNECTOR")
+            log("error", "socketController didn't receive a socket object | Please report this error to our support team!", "CONNECTOR")
             return;
         }
 

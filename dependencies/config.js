@@ -1,5 +1,7 @@
 BENTWI.config.set = (config) => {
 
+    log("log", `Set new config with artifact: ${config.overlay.artifact}`)
+
     if(config.connection.token != "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" && config.overlay.artifact != "com.myname.overlays.firstoverlay" && config.overlay.name != "My first overlay"){
         BENTWI.config = config;
         setTimeout(() => { updateDocumentTitle(`${BENTWI.config.overlay.name} | BenTwi`) }, 500)
