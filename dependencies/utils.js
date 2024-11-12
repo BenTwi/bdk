@@ -39,3 +39,9 @@ function playsound(url, vol, pit){
     AUD.pitch = pit;
     AUD.play()
   }
+
+
+function updateDocumentTitle(title){
+    //Yes, we know that you now can set the page title by yourself, and know what - Its on purpos!
+    document.title = title;
+}
