@@ -20,6 +20,22 @@ let BENTWI = {
         bdk: "v0.0",
         backend: "v0.0",
         frontend: "v0.0"
+    },
+    events: {
+        events: {},
+
+        on: function(event, callback) {
+            if (!this.events[event]) {
+                this.events[event] = [];
+            }
+            this.events[event].push(callback);
+        },
+        
+        emit: function(event, ...args) {
+            if (this.events[event]) {
+                this.events[event].forEach(callback => callback(...args));
+            }
+        }
     }
 };
 
