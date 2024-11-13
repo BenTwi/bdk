@@ -90,7 +90,7 @@ function loadBenTwiDotJSON(){
         fetch('https://bentwi.skykopf.com/dev-kit/bentwi.json').then(response => {
             return response.json();
         }).then(data => {
-            BENTWI.config = data;
+            BENTWI.config = { ...BENTWI.config, ...data };
             if(log) log("log", "Loaded BenTwi.json in Inline mode", "MAIN")
         }).catch(err => {
             err = JSON.stringify(err)
