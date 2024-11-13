@@ -19,7 +19,7 @@ BENTWI.connector = {
             return;
         }
         
-        after = after * 5000;
+        after = after * 1000;
         log('warn', `Disconnecting Session and connecting again in ${after} seconds..`, 'CONNECTOR')
     
         BENTWI.connector.socket.close()

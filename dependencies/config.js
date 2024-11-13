@@ -6,7 +6,7 @@ BENTWI.config.set = (config) => {
         setTimeout(() => { 
         console.log(BENTWI.config)
         
-        log("log", `Set new config with artifact: ${config.overlay.artifact}`)
+        log("log", `Set new config with artifact: ${config.overlay.artifact}`, 'CONFIG')
         updateDocumentTitle(`${BENTWI.config.overlay.name} | BenTwi`) }, 500)
     } else {
         log("error", "Config wasn't able to be set because either token, artifact or name was not set!", "SESSION")
