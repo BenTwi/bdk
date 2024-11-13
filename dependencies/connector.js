@@ -83,6 +83,17 @@ BENTWI.connector = {
             BENTWI.sessions.live.config = parsedMessage.DATA
 
                 break;
+
+            case "OB2OF_EVENTSUB":
+            BENTWI.events.emit('twitch', parsedMessage.DATA)
+            BENTWI.events.emit(parsedMessage.DATA.subscription.type, parsedMessage.DATA)
+                break;
+
+            case "OB2OF_CHAT":
+                BENTWI.events.emit('twitch', parsedMessage.DATA)
+                BENTWI.events.emit('channel.chat.message', parsedMessage.DATA)
+            break;
+
             case "OB2OF_PING":
                 // Respond with PONG message
                 BENTWI.connector.sendMessage({
@@ -90,8 +101,6 @@ BENTWI.connector = {
                 });
                 log("info", "Responded with OF2OB_PONG", "CONNECTOR")
                 break;
-            
-            // Add more cases here for handling other messages as needed
 
             default:
                 log("warn", "Received an unhandled message ID: " + parsedMessage.ID, "CONNECTOR")
