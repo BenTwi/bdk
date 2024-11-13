@@ -55,6 +55,14 @@ function loadDependencys(){
             log("log", `Loaded dependency "${dependency}"`, "MAIN")
         }, 2500)
 
+        if(dependency === "mappings"){
+            if(!preRegisterMappings){
+                log("log", `No preRegisterMappings function found, skipped!`, "MAPPINGS");
+                return;
+            };
+            setTimeout(preRegisterMappings, 2000)
+        }
+
     })
 
     fetch('https://bentwi.skykopf.com/dev-kit/config/domains.json').then(response => {
