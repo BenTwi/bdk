@@ -76,6 +76,8 @@ BENTWI.connector = {
             return;
         }
 
+        console.log("Received: " + parsedMessage.ID)
+
         // Use switch statement to handle different message types by ID
         switch (parsedMessage.ID) {
             case "OB2OF_CONFIG":
