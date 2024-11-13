@@ -80,18 +80,20 @@ BENTWI.connector = {
         switch (parsedMessage.ID) {
             case "OB2OF_CONFIG":
 
-            BENTWI.sessions.live.config = parsedMessage.DATA
+                BENTWI.sessions.live.config = parsedMessage.DATA
 
-                break;
+            break;
 
             case "OB2OF_EVENTSUB":
-            BENTWI.events.emit('twitch', parsedMessage.DATA)
-            BENTWI.events.emit(parsedMessage.DATA.subscription.type, parsedMessage.DATA)
-                break;
+                BENTWI.events.emit('twitch', parsedMessage.DATA)
+                BENTWI.events.emit(parsedMessage.DATA.subscription.type, parsedMessage.DATA)
+                logWorth = true;
+            break;
 
             case "OB2OF_CHAT":
                 BENTWI.events.emit('twitch', parsedMessage.DATA)
                 BENTWI.events.emit('channel.chat.message', parsedMessage.DATA)
+                logWorth = true;
             break;
 
             case "OB2OF_PING":
