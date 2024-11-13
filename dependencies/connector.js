@@ -15,7 +15,7 @@ BENTWI.connector = {
     },
     reconnect: (after) => {
         if(!BENTWI.connector.socket){
-            log('warn', `Can't use reconnect when no session is active`, 'CONNECTOR')
+            log('warn', `Can't use reconnect when no socket is active`, 'CONNECTOR')
             return;
         }
         
