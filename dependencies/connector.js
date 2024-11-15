@@ -89,13 +89,14 @@ BENTWI.connector = {
             case "OB2OF_EVENTSUB":
                 BENTWI.events.emit('twitch', parsedMessage.DATA)
                 BENTWI.events.emit(parsedMessage.DATA.subscription.type, parsedMessage.DATA)
-                logWorth = true;
             break;
 
             case "OB2OF_CHAT":
                 BENTWI.events.emit('twitch', parsedMessage.DATA)
                 BENTWI.events.emit('channel.chat.message', parsedMessage.DATA)
-                logWorth = true;
+            break;
+            case "OB2OF_AUTHORIZE_SUCCESS":
+                BENTWI.events.emit('authorized', parsedMessage.DATA)
             break;
 
             case "OB2OF_PING":
@@ -113,7 +114,7 @@ BENTWI.connector = {
 
         if(logWorth){
             log("warn", "BenTwi received a message from the backend: ", "DEBUG")
-            console.log(message)
+            console.log(parsedMessage)
         }
 
     },
