@@ -83,12 +83,32 @@ BENTWI.connector = {
             case "OB2OF_CONFIG":
 
                 BENTWI.sessions.live.config = parsedMessage.DATA
+                log("log", "Session config aquired & saved!", "CONNECTOR")
 
             break;
 
             case "OB2OF_EVENTSUB":
+
+            const eventType = parsedMessage.DATA.subscription.type;
+            const eventData = parsedMessage.DATA.event;
+
+            if (
+                eventType === "channel.follow" ||
+                eventType === "channel.subscribe" ||
+                eventType === "channel.subscription.end" ||
+                eventType === "channel.subscription.gift" ||
+                eventType === "channel.subscription.message" ||
+                eventType === "channel.cheer" ||
+                eventType === "channel.raid"
+            ) {
+                BENTWI.events.emit('alert', { type: eventType, data: eventData });
+            }
+             else {
+
                 BENTWI.events.emit('twitch', parsedMessage.DATA)
                 BENTWI.events.emit(parsedMessage.DATA.subscription.type, parsedMessage.DATA)
+
+            }
             break;
 
             case "OB2OF_CHAT":

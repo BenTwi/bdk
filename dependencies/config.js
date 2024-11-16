@@ -16,5 +16,10 @@ BENTWI.config.set = (config) => {
 }
 
 BENTWI.config.get = () => {
-    return BENTWI.sessions.live.config;
+    const CONFIG = BENTWI.sessions.live.config
+    if(!CONFIG){
+        log("error", "There is no config set!", "CONFIG")
+        return {};
+    }
+    return CONFIG;
 }
