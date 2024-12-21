@@ -151,6 +151,22 @@ BENTWI.connector = {
                 BENTWI.events.emit('authorized', parsedMessage.DATA)
             break;
 
+                case "OB2OF_MSG":
+                BENTWI.events.emit('msg', parsedMessage.DATA)
+            break;
+
+                case "OB2OF_COLOR":
+                BENTWI.events.emit('color', parsedMessage.DATA)
+            break;
+
+                case "OB2OF_NOTIFY":
+                BENTWI.events.emit('notify', parsedMessage.DATA)
+            break;
+
+                case "OB2OF_NEXTUP":
+                BENTWI.events.emit('nextup', parsedMessage.DATA)
+            break;
+
             case "OB2OF_PING":
                 // Respond with PONG message
                 BENTWI.connector.sendMessage({
