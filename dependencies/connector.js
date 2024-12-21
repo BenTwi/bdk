@@ -115,6 +115,38 @@ BENTWI.connector = {
                 BENTWI.events.emit('twitch', parsedMessage.DATA)
                 BENTWI.events.emit('channel.chat.message', parsedMessage.DATA)
             break;
+            case "OB2OF_ALERT":
+                BENTWI.events.emit('alert', parsedMessage.DATA)
+
+                switch(parsedMessage.DATA.type){
+
+                    case "SUB":
+                        BENTWI.events.emit('alert.sub', parsedMessage.DATA)
+                        break;
+                        case "RESUB":
+                        BENTWI.events.emit('alert.resub', parsedMessage.DATA)
+                        break;
+                        case "SUB_GIFT":
+                        BENTWI.events.emit('alert.gift_sub', parsedMessage.DATA)
+                        break;
+                        case "COMMUNITY_GIFT":
+                        BENTWI.events.emit('alert.sub_bomb', parsedMessage.DATA)
+                        BENTWI.events.emit('alert.community_gift', parsedMessage.DATA)
+                        break;
+                        case "RAID":
+                        BENTWI.events.emit('alert.raid', parsedMessage.DATA)
+                        break;
+                        case "CHEER":
+                        BENTWI.events.emit('alert.cheer', parsedMessage.DATA)
+                        BENTWI.events.emit('alert.bits', parsedMessage.DATA)
+                        break;
+                        case "FOLLOW":
+                        BENTWI.events.emit('alert.follower', parsedMessage.DATA)
+                        break;
+                        
+                }
+                
+            break;
             case "OB2OF_AUTHORIZE_SUCCESS":
                 BENTWI.events.emit('authorized', parsedMessage.DATA)
             break;
