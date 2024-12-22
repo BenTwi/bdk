@@ -83,6 +83,7 @@ BENTWI.connector = {
             case "OB2OF_CONFIG":
 
                 BENTWI.sessions.live.config = parsedMessage.DATA
+                BENTWI.events.emit('config', parsedMessage.DATA)
                 log("log", "Session config aquired & saved!", "CONNECTOR")
 
             break;
