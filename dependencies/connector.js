@@ -92,28 +92,14 @@ BENTWI.connector = {
 
             const eventType = parsedMessage.DATA.subscription.type;
             const eventData = parsedMessage.DATA.event;
+            BENTWI.events.emit('twitch.eventsub', parsedMessage.DATA)
+            BENTWI.events.emit(parsedMessage.DATA.subscription.type, parsedMessage.DATA)
 
-            if (
-                eventType === "channel.follow" ||
-                eventType === "channel.subscribe" ||
-                eventType === "channel.subscription.end" ||
-                eventType === "channel.subscription.gift" ||
-                eventType === "channel.subscription.message" ||
-                eventType === "channel.cheer" ||
-                eventType === "channel.raid"
-            ) {
-                BENTWI.events.emit('alert', { type: eventType, data: eventData });
-            }
-             else {
-
-                BENTWI.events.emit('twitch', parsedMessage.DATA)
-                BENTWI.events.emit(parsedMessage.DATA.subscription.type, parsedMessage.DATA)
-
-            }
+            
             break;
 
             case "OB2OF_CHAT":
-                BENTWI.events.emit('twitch', parsedMessage.DATA)
+                BENTWI.events.emit('twitch.chat', parsedMessage.DATA)
                 BENTWI.events.emit('channel.chat.message', parsedMessage.DATA)
             break;
             case "OB2OF_ALERT":
