@@ -42,7 +42,7 @@ let BENTWI = {
 
 function loadDependencys(){
 
-    const dependencys = ['logger', 'mappings', 'runtimes', 'utils', 'sessionControll', 'connector', 'config', 'version']
+    const dependencys = ['logger', 'mappings', 'environment', 'utils', 'sessionControll', 'connector', 'config', 'version']
 
     dependencys.forEach(dependency => {
 
