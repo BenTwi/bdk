@@ -61,7 +61,9 @@ async function initENV(liveRefresh) {
     }
 
     if (liveRefresh) {
-        setTimeout(initENV, 1500); // Added missing parenthesis
+        setTimeout(() => {
+            initENV(true);
+        }, 1500); // Added missing parenthesis
     }
 }
 
