@@ -76,7 +76,6 @@ function loadDependencys(){
     });
 
     setTimeout(() => {
-        initENV()
         setTimeout(loadBenTwiDotJSON, 1000)
         setTimeout(newSession, 4000)
     }, 3500)
@@ -94,6 +93,7 @@ function loadBenTwiDotJSON(){
         setTimeout(loadBenTwiDotJSON, 1000)
         return;
         log("log", "Loaded BenTwi.json in Local mode", "MAIN")
+        initENV(BENTWI.config.live_refresh_environment)
     } else {
             log("log", "Fetching default BenTwi.json from Backend Server", "MAIN")
         fetch('https://bentwi.skykopf.com/dev-kit/bentwi.json').then(response => {
@@ -101,6 +101,7 @@ function loadBenTwiDotJSON(){
         }).then(data => {
             BENTWI.config = { ...BENTWI.config, ...data };
             if(log) log("log", "Loaded BenTwi.json in Inline mode", "MAIN")
+            initENV(BENTWI.config.live_refresh_environment)
         }).catch(err => {
             err = JSON.stringify(err)
             if(err == "{}") return;
