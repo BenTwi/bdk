@@ -15,6 +15,7 @@
 
     "preferences": {
         "auto_reconnect_on_connection_loss": true,
+        "live_refresh_environment": false,
         "debug": false
     }
 
