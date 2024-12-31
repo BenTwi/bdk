@@ -8,7 +8,7 @@ BENTWI.config.set = (config) => {
         
         log("log", `Set new config with artifact: ${config.overlay.artifact}`, 'CONFIG')
             console.log("Should LIVE update env: " + BENTWI.config.live_refresh_environment)
-            initENV(BENTWI.config.live_refresh_environment);
+            initENV(BENTWI.config.preferences.live_refresh_environment);
         updateDocumentTitle(`${BENTWI.config.overlay.name} | BenTwi`) }, 500)
     } else {
         log("error", "Config wasn't able to be set because either token, artifact or name was not set!", "SESSION")
