@@ -3,6 +3,7 @@ var env = 'development';
 const OBS = window.obsstudio;
 
 async function initENV(liveRefresh, interval) {
+    log("log", "Initilizing Environment..", "ENV")
     if (OBS) {
         BENTWI.environment = {
             arch: "OBS_STUDIO",
