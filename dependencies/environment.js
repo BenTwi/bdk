@@ -1,11 +1,18 @@
 BENTWI.environment = {};
 var env = 'development';
+const OBS = window.obsstudio;
 
-async function initENV() {
-    if (window.obsstudio) {
+async function initENV(liveRefresh, interval) {
+    if (OBS) {
         BENTWI.environment = {
             arch: "OBS_STUDIO",
-            version: window.obsstudio.version
+            version: OBS..pluginVersion,
+            permission: OBS.getControlLevel(),
+            state: OBS.getStatus(),
+            curretnScene: OBS.getCurrentScene(),
+            scenes: OBS.getScenes(),
+            currentTransition: OBS.getCurrentTransition(),
+            transitions: OBS.getTransitions()
         };
         env = 'operating';
     } else if (typeof SE_API !== "undefined") {
@@ -54,5 +61,8 @@ async function initENV() {
     } else {
         log("critical", `Failed to set environment, check the discord to see wether the env is already registered, if not feel free to open a support ticket and request adding it!`, "RUNTIME")
     }
+
+    if(liveRefresh){
+        setTimeout(initENV, interval || 1500)
 
 }
