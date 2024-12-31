@@ -2,7 +2,7 @@ BENTWI.environment = {};
 var env = 'development';
 const OBS = window.obsstudio;
 
-async function initENV(liveRefresh, interval) {
+async function initENV(liveRefresh) {
     log("log", "Initializing Environment..", "ENV");
 
     if (OBS) {
@@ -61,7 +61,7 @@ async function initENV(liveRefresh, interval) {
     }
 
     if (liveRefresh) {
-        setTimeout(initENV, interval || 1500); // Added missing parenthesis
+        setTimeout(initENV, 1500); // Added missing parenthesis
     }
 }
 
