@@ -6,18 +6,10 @@ async function initENV(liveRefresh, interval) {
     log("log", "Initializing Environment..", "ENV");
 
     if (OBS) {
-        BENTWI.environment = {
-            arch: "OBS_STUDIO",
-            version: OBS.pluginVersion,
-            permission: OBS.getControlLevel(),
-            state: OBS.getStatus(),
-            currentScene: OBS.getCurrentScene(), // Fixed typo
-            scenes: OBS.getScenes(),
-            currentTransition: OBS.getCurrentTransition(),
-            transitions: OBS.getTransitions()
-        };
-        env = 'operating';
-    } else if (typeof SE_API !== "undefined") {
+
+        initOBS();
+        
+} else if (typeof SE_API !== "undefined") {
         const SE = await SE_API.getOverlayStatus();
         BENTWI.environment = {
             arch: "STREAMELEMENTS",
@@ -71,4 +63,52 @@ async function initENV(liveRefresh, interval) {
     if (liveRefresh) {
         setTimeout(initENV, interval || 1500); // Added missing parenthesis
     }
+}
+
+
+
+async function initOBS() {
+    try {
+        const level = await getControlLevelPromise();
+        const status = await getStatusPromise();
+        const currentScene = await getCurrentScenePromise();
+        const scenes = await getScenesPromise();
+        const currentTransition = await getCurrentTransitionPromise();
+        const transitions = await getTransitionsPromise();
+
+        BENTWI.environment = {
+            arch: "OBS_STUDIO",
+            version: OBS.pluginVersion,
+            permission: level,
+            state: status,
+            currentScene: currentScene,
+            scenes: scenes,
+            currentTransition: currentTransition,
+            transitions: transitions
+        };
+        env = 'operating';
+        log("log", "OBS environment initialized!", "RUNTIME");
+    } catch (error) {
+        log("error", `Failed to initialize OBS environment: ${error.message}`, "RUNTIME");
+    }
+}
+
+// Wrapper functions for OBS methods (if Promises aren't natively supported)
+function getControlLevelPromise() {
+    return new Promise((resolve) => OBS.getControlLevel(resolve));
+}
+function getStatusPromise() {
+    return new Promise((resolve) => OBS.getStatus(resolve));
+}
+function getCurrentScenePromise() {
+    return new Promise((resolve) => OBS.getCurrentScene(resolve));
+}
+function getScenesPromise() {
+    return new Promise((resolve) => OBS.getScenes(resolve));
+}
+function getCurrentTransitionPromise() {
+    return new Promise((resolve) => OBS.getCurrentTransition(resolve));
+}
+function getTransitionsPromise() {
+    return new Promise((resolve) => OBS.getTransitions(resolve));
 }
