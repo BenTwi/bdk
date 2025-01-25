@@ -36,8 +36,10 @@ function getUrlParam(param, urlString){
     if(!param) log("error", "Please provide an param to search for in the URL", "UTILS");
     const URLOBJ = urlString || window.location.href;
     
-    var url = new URL(URLOBJ);
-var c = url.searchParams.get(param);
+    const url = new URL(URLOBJ);
+    const RESP = url.searchParams.get(param);
+
+    return RESP;
     
 }
 
