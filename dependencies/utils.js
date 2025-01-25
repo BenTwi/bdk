@@ -31,6 +31,17 @@ function rng(rndType, data){
 }
 
 
+function getUrlParam(param, urlString){
+
+    if(!param) log("error", "Please provide an param to search for in the URL", "UTILS");
+    const URLOBJ = urlString || window.location.href;
+    
+    var url = new URL(URLOBJ);
+var c = url.searchParams.get(param);
+    
+}
+
+
 function playsound(url, vol, pit){
     if(!vol) vol = 1;
     if(!pit) pit = 1;
