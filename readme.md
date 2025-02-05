@@ -16,7 +16,7 @@ Current development state:
 - [ ] ~~Add music widget support~~
 - [ ] Push the frontend further
 - [ ] Create a docs page on domain
-- [ ] ~~Get Discord server ready~~
+- [X] ~~Get Discord server ready~~
 - [ ] ~~Eat something~~
 - [ ] ~~Drink water~~
 
