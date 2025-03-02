@@ -1,9 +1,13 @@
-BENTWI.environment = {};
+BENTWI.environment = {
+    firstLoad: true
+};
 var env = 'development';
 const OBS = window.obsstudio;
 
 async function initENV(liveRefresh) {
+    if(BENTWI.environment.firstLoad){
     log("log", "Initializing Environment..", "ENV");
+        }
 
     if (OBS) {
 
@@ -56,6 +60,10 @@ async function initENV(liveRefresh) {
     if (BENTWI.environment.arch) {
         BENTWI.environment.env = env;
         log("log", `Runtime is now set to ${BENTWI.environment.arch}!`, "RUNTIME");
+        if(BENTWI.environment.firstLoad){
+            BENTWI.environment.firstLoad = false;
+    log("log", `Runtime is now set to ${BENTWI.environment.arch}!`, "RUNTIME");
+        }
     } else {
         log("critical", `Failed to set environment, check the Discord to see whether the env is already registered. If not, feel free to open a support ticket and request adding it!`, "RUNTIME");
     }
