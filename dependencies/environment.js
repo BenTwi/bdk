@@ -100,9 +100,8 @@ async function initOBS() {
     } catch (error) {
         log("error", `Failed to initialize OBS environment: ${error.message}`, "RUNTIME");
     }
-}
 
-// Wrapper functions for OBS methods (if Promises aren't natively supported)
+    // Wrapper functions for OBS methods (if Promises aren't natively supported)
 function getControlLevelPromise() {
     return new Promise((resolve) => OBS.getControlLevel(resolve));
 }
@@ -120,4 +119,6 @@ function getCurrentTransitionPromise() {
 }
 function getTransitionsPromise() {
     return new Promise((resolve) => OBS.getTransitions(resolve));
+}
+    
 }
