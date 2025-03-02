@@ -58,3 +58,32 @@ function updateDocumentTitle(title){
     //Yeah, laziness is kicking in..
     document.title = title;
 }
+
+async function httpReq(url, body = null, headers = {}, method = 'GET') {
+    try {
+        const options = {
+            method: method.toUpperCase(),
+            headers: { 'Content-Type': 'application/json', ...headers },
+        };
+        
+        if (body && method !== 'GET') {
+            options.body = JSON.stringify(body);
+        }
+        
+        const response = await fetch(url, options);
+        
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status} - ${response.statusText}`);
+        }
+        
+        const contentType = response.headers.get('content-type');
+        if (contentType && contentType.includes('application/json')) {
+            return await response.json();
+        }
+        
+        return await response.text();
+    } catch (error) {
+        console.error('Fetch error:', error);
+        return { error: true, message: error.message };
+    }
+}
