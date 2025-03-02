@@ -59,7 +59,6 @@ async function initENV(liveRefresh) {
 
     if (BENTWI.environment.arch) {
         BENTWI.environment.env = env;
-        log("log", `Runtime is now set to ${BENTWI.environment.arch}!`, "RUNTIME");
         if(BENTWI.environment.firstLoad){
             BENTWI.environment.firstLoad = false;
     log("log", `Runtime is now set to ${BENTWI.environment.arch}!`, "RUNTIME");
