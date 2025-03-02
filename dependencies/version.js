@@ -1,1 +1,1 @@
-BENTWI.versions.bdk = "v0.4"
+BENTWI.versions.bdk = "v0.7"
