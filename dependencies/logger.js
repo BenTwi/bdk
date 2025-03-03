@@ -10,6 +10,11 @@ function log(level, message, context) {
             logMessage = `${DATE.toLocaleTimeString()} [🟢BenTwi-LOG🟢] [${context}] ${message}\n`;
             console.log(logMessage);
         break;
+        case "debug":
+            if(!BENTWI.config.preferences.debug) return;
+            logMessage = `${DATE.toLocaleTimeString()} [⚫BenTwi-DEBUG⚫] [${context}] ${message}\n`;
+            console.log(logMessage);
+        break;
         case "warn":
             logMessage = `${DATE.toLocaleTimeString()} [🟡BenTwi-WARNING🟡] [${context}] ${message}\n`;
             console.warn(logMessage);
