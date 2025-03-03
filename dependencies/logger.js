@@ -1,6 +1,8 @@
 function log(level, message, context) {
     const DATE = new Date()
     var logMessage;
+
+    if(context == "DEBUG") level = "debug"
     
     if(!context) context = "MISSING-TAG | Please report this to the support!"
 
