@@ -87,3 +87,8 @@ async function httpReq(url, body = null, headers = {}, method = 'GET') {
         return { error: true, message: error.message };
     }
 }
+
+function getPlaybackPercentage(durationInMillis, currentPlaybackTime) {
+    let totalDuration = durationInMillis / 1000; // Convert to seconds
+    return (currentPlaybackTime / totalDuration) * 100;
+}
