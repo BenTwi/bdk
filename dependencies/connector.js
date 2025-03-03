@@ -7,7 +7,7 @@ BENTWI.connector = {
         if(BENTWI.config && BENTWI.config.connection && BENTWI.config.connection.token != "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"){
             BENTWI.connector.socket = new WebSocket(remote + `?token=${BENTWI.config.connection.token}&version=${BENTWI.config.connection.version}`);
             BENTWI.connector.socketController(BENTWI.connector.socket)
-            log("warn", "Connecting to backend with domain: " + remote, "DEBUG")
+            log("debug", "Connecting to backend with domain: " + remote, "DEBUG")
         } else {
             log("warn", "Delayed connecting task because BenTwi.json isn't set yet - Delayed by 5s", 'CONNECTOR');
             setTimeout(() => { BENTWI.connector.connect(remote); }, 5000)
@@ -38,24 +38,25 @@ BENTWI.connector = {
 
     socketController: (socket) => {
         if(!socket){
-            log("error", "socketController didn't receive a socket object | Please report this error to our support team!", "CONNECTOR")
+            log("critical", "socketController didn't receive a socket object | Please report this error to our support team!", "CONNECTOR")
             return;
         }
 
         socket.addEventListener("open", () => {
-            log("warn", "BenTwi established a connection to the Backend", "CONNECTOR")
+            log("log", "BenTwi connectin established", "CONNECTOR")
         })
 
         socket.addEventListener("close", () => {
-            log("warn", "BenTwi's connection to the backend was closed", "CONNECTOR")
+            log("warn", "BenTwi's connection was closed", "CONNECTOR")
             if(BENTWI.config.preferences.auto_reconnect_on_connection_loss){
                 log("warn", "BenTwi will try to reconnect!")
-                BENTWI.connector.reconnect(5)
+                BENTWI.connector.reconnect(2)
             }
         })
 
         socket.addEventListener("error", (err) => {
-            log("warn", "BenTwi backend connection got an error: " + JSON.stringify(err), "CONNECTOR")
+            log("debug", "BenTwi backend connection got an error: " + JSON.stringify(err), "CONNECTOR")
+            BENTWI.connector.reconnect(2)
         })
 
         socket.addEventListener("message", (message) => {
@@ -101,6 +102,10 @@ BENTWI.connector = {
             case "OB2OF_CHAT":
                 BENTWI.events.emit('twitch.chat', parsedMessage.DATA)
                 BENTWI.events.emit('channel.chat.message', parsedMessage.DATA)
+            break;
+            case "OB2OF_ERROR":
+                log("DEBUG", message, "CONFIG")
+                BENTWI.events.emit('error', parsedMessage.DATA)
             break;
             case "OB2OF_ALERT":
                 BENTWI.events.emit('alert', parsedMessage.DATA)
@@ -159,16 +164,16 @@ BENTWI.connector = {
                 BENTWI.connector.sendMessage({
                     ID: "OF2OB_PONG"
                 });
-                log("info", "Responded with OF2OB_PONG", "CONNECTOR")
+                log("debug", "Responded with OF2OB_PONG", "CONNECTOR")
                 break;
 
             default:
-                log("warn", "Received an unhandled message ID: " + parsedMessage.ID, "CONNECTOR")
+                log("debug", "Received an unhandled message ID: " + parsedMessage.ID, "CONNECTOR")
                 break;
         }
 
         if(logWorth){
-            log("warn", "BenTwi received a message from the backend: ", "DEBUG")
+            log("debug", "BenTwi received a message from the backend: ", "DEBUG")
             console.log(parsedMessage)
         }
 
