@@ -5,8 +5,8 @@ BENTWI.config.set = (config) => {
         
         setTimeout(() => { 
             if(BENTWI.config.preferences.debug){
-        console.log(BENTWI.config)
-                console.log("Should LIVE update env: " + BENTWI.config.preferences.live_refresh_environment)
+                console.log(BENTWI.config)
+                log("DEBUG", "Should LIVE update env: " + BENTWI.config.preferences.live_refresh_environment, "CONFIG")
                 }
         
         log("log", `Set new config with artifact: ${config.overlay.artifact}`, 'CONFIG')
