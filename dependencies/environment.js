@@ -6,7 +6,7 @@ const OBS = window.obsstudio;
 
 async function initENV(liveRefresh) {
     if(BENTWI.environment.firstLoad){
-    log("log", "Initializing Environment..", "ENV");
+    log("debug", "Initializing Environment..", "ENV");
         }
 
     if (OBS) {
@@ -70,7 +70,7 @@ async function initENV(liveRefresh) {
     if (liveRefresh) {
         setTimeout(() => {
             initENV(true);
-        }, 1500); // Added missing parenthesis
+        }, 1500);
     }
 }
 
@@ -96,7 +96,7 @@ async function initOBS() {
             transitions: transitions
         };
         env = 'operating';
-        log("log", "OBS environment initialized!", "RUNTIME");
+        log("debug", "OBS environment initialized!", "RUNTIME");
     } catch (error) {
         log("error", `Failed to initialize OBS environment: ${error.message}`, "RUNTIME");
     }
