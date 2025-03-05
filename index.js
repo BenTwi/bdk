@@ -57,7 +57,7 @@ function loadDependencys(){
 
         if (dependency === "mappings") {
     if (typeof preRegisterMappings !== "function") {
-        log("log", `No preRegisterMappings function found, skipped!`, "MAPPINGS");
+        setTimeout(() => { log("log", `No preRegisterMappings function found, skipped!`, "MAPPINGS"); }, 2000)
     } else {
         setTimeout(() => preRegisterMappings(), 2000);
     }
