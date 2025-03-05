@@ -16,6 +16,13 @@ let domains;
 let BENTWI = {
     useLocal: true,
     config: {},
+    useInlineConfig(val){
+        if(val == true || val == false){
+            BENTWI.useLocal = !val
+        } else {
+            log("error", `setInlineBenTwiConfig() needs an boolean of true or false instead of ${val}`, "MAIN")
+        }
+    }
     versions: {
         bdk: "v0.0",
         backend: "v0.0",
@@ -108,15 +115,6 @@ function loadBenTwiDotJSON(){
     
     }
 
-}
-
-
-function setInlineBenTwiConfig(val){
-    if(val == true || val == false){
-        BENTWI.useLocal = !val
-    } else {
-        log("error", `setInlineBenTwiConfig() needs an boolean of true or false instead of ${val}`, "MAIN")
-    }
 }
 
 setTimeout(loadDependencys, 500)
