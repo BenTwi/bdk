@@ -22,7 +22,7 @@ let BENTWI = {
         } else {
             log("error", `setInlineBenTwiConfig() needs an boolean of true or false instead of ${val}`, "MAIN")
         }
-    }
+    },
     versions: {
         bdk: "v0.0",
         backend: "v0.0",
