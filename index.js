@@ -42,7 +42,7 @@ let BENTWI = {
 
 function loadDependencys(){
 
-    const dependencys = ['logger', 'mappings', 'environment', 'utils', 'sessionControll', 'connector', 'config', 'api', 'version']
+    const dependencys = ['logger', 'mappings', 'environment', 'utils', 'sessionControll', 'connector', 'config', 'api', 'alertManager', 'version']
 
     dependencys.forEach(dependency => {
 
@@ -55,14 +55,14 @@ function loadDependencys(){
             log("log", `Loaded dependency "${dependency}"`, "MAIN")
         }, 2500)
 
-        if(dependency === "mappings"){
-            if(!preRegisterMappings){
-                log("log", `No preRegisterMappings function found, skipped!`, "MAPPINGS");
-            } else {
-                setTimeout(preRegisterMappings, 2000)
-            }
-            
-        }
+        if (dependency === "mappings") {
+    if (typeof preRegisterMappings !== "function") {
+        log("log", `No preRegisterMappings function found, skipped!`, "MAPPINGS");
+    } else {
+        setTimeout(() => preRegisterMappings(), 2000);
+    }
+}
+
 
     })
 
