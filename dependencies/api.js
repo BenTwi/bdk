@@ -99,7 +99,7 @@ BENTWI.api = {
       });
     },
 
-      _execute = async (endpoint, params) => {
+      _execute: async (endpoint, params) => {
   const url = `https://bentwi.skykopf.com/api/bentwi/${endpoint}`;
   
   // Prepare headers for authorization
@@ -129,8 +129,7 @@ BENTWI.api = {
     console.error(`API request failed: ${error}`);
     throw error;
   }
-};
+}
       
-  }
+  
 };
-
