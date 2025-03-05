@@ -97,7 +97,7 @@ function loadBenTwiDotJSON(){
 
     if(BENTWI.useLocal){
         log("warn", "Hey! In this version BenTwi can't use a local BenTwi.json file.", "MAIN")
-        BenTwi.useInlineConfig(true)
+        BENTWI.useInlineConfig(true)
         setTimeout(loadBenTwiDotJSON, 1000)
         return;
         log("log", "Loaded BenTwi.json in Local mode", "MAIN")
