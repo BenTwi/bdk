@@ -16,7 +16,7 @@ let domains;
 let BENTWI = {
     useLocal: true,
     config: {},
-    useInlineConfig(val){
+    useInlineConfig: (val) => {
         if(val == true || val == false){
             BENTWI.useLocal = !val
         } else {
