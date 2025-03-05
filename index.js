@@ -19,6 +19,7 @@ let BENTWI = {
     useInlineConfig: (val) => {
         if(val == true || val == false){
             BENTWI.useLocal = !val
+            log("debug", "BenTwi will: " + BENTWI.useLocal ? "use the file as config" : "use the script as config", "MAIN")
         } else {
             log("error", `setInlineBenTwiConfig() needs an boolean of true or false instead of ${val}`, "MAIN")
         }
@@ -96,7 +97,7 @@ function loadBenTwiDotJSON(){
 
     if(BENTWI.useLocal){
         log("warn", "Hey! In this version BenTwi can't use a local BenTwi.json file.", "MAIN")
-        setInlineBenTwiConfig(true)
+        BenTwi.useInlineConfig(true)
         setTimeout(loadBenTwiDotJSON, 1000)
         return;
         log("log", "Loaded BenTwi.json in Local mode", "MAIN")
