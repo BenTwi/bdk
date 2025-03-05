@@ -13,7 +13,6 @@
 - [ ] *Start developing Skytrough*
 - [x] Give BenTwi a logo
 - [x] Create graphics for all over BenTwi's User Interface and Branding
-- [ ] *Profile Stream game activity*
 - [x] Add music widget support
 - [x] Create a docs page on the domain
 - [x] Get Discord server ready
