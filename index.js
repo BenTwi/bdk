@@ -19,7 +19,7 @@ let BENTWI = {
     useInlineConfig: (val) => {
         if(val == true || val == false){
             BENTWI.useLocal = !val
-            setTimeout(() => { log("debug", "BenTwi will: " + BENTWI.useLocal ? "use the file as config" : "use the script as config", "MAIN") }, 2000)
+            setTimeout(() => { log("debug", "BenTwi will: " + BENTWI.useLocal ? "use the file as config" : "use the script as config", "MAIN") }, 5000)
         } else {
             log("error", `setInlineBenTwiConfig() needs an boolean of true or false instead of ${val}`, "MAIN")
         }
