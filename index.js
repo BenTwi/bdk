@@ -69,7 +69,7 @@ function loadDependencys(){
     fetch('https://bentwi.skykopf.com/dev-kit/config/domains.json').then(response => {
         return response.json();
     }).then(data => {
-        log("log", "Successfully loaded domains", "MAIN")
+        setTimeout(() => { log("log", "Successfully loaded domains", "MAIN") }, 1000)
         BENTWI.domains = data;
     }).catch(err => {
         log("critical", `Cannot load domains from backend server: ${JSON.stringify(err)}`, "MAIN")
