@@ -77,7 +77,7 @@ BENTWI.connector = {
             return;
         }
 
-        console.log("Received: " + parsedMessage.ID)
+        log("debug", "Received: " + parsedMessage.ID, "DEBUG")
 
         // Use switch statement to handle different message types by ID
         switch (parsedMessage.ID) {
