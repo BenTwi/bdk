@@ -1,5 +1,5 @@
 // General document queries for quick access
-let MAPPINGS = {
+BENTWI.utils.mappings = {
     add: (tag, type, alias) => {
         // Error handling: Check if any parameter is missing
         if (!tag || !type || !alias) {
