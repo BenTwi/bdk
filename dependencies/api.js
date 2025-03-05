@@ -1,5 +1,5 @@
 // Define the BENTWI API object with specific routes
-BENTWI.api: {
+BENTWI.api = {
     emulate: (params) => {
       return BENTWI.api._execute('emulate', {
         ...params,
