@@ -20,7 +20,7 @@ BENTWI.utils.mappings = {
         } else if (type === "id" || type === "#") {
             selector = document.querySelector(`#${tag}`);
         } else {
-            log("error", `Invalid type '${type}' for ${tag}. Use 'class'/'.' or 'id'/'#' only.`, "MAPPINGS");
+            selector = document.querySelector(`${tag}`);
             return;
         }
 
