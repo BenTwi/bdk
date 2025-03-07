@@ -2,7 +2,7 @@
 BENTWI.utils.mappings = {
     add: (tag, type, alias, all = false) => {
         // Error handling: Check if any parameter is missing
-        if (!tag || !type || !alias) {
+        if (!tag || type == undefined || !alias) {
             log("error", "Missing parameter(s): 'tag', 'type', or 'alias'", "MAPPINGS");
             return;
         }
