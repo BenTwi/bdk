@@ -1,6 +1,6 @@
 // General document queries for quick access
 BENTWI.utils.mappings = {
-    add: (tag, type, alias) => {
+    add: (tag, type, alias, all = false) => {
         // Error handling: Check if any parameter is missing
         if (!tag || !type || !alias) {
             log("error", "Missing parameter(s): 'tag', 'type', or 'alias'", "MAPPINGS");
@@ -8,20 +8,31 @@ BENTWI.utils.mappings = {
         }
         
         // Error handling: Check if the alias already exists in MAPPINGS
-        if (MAPPINGS[alias]) {
+        if (BENTWI.utils.mappings[alias]) {
             log("error", `Cannot add ${tag} as ${alias} because ${alias} already exists!`, "MAPPINGS");
             return;
         }
 
         // Determine the selector based on the 'type' parameter
         let selector;
-        if (type === "class" || type === ".") {
+        if(all){
+            if (type === "class" || type === ".") {
+            selector = document.querySelectorAll(`.${tag}`);
+        } else if (type === "id" || type === "#") {
+            selector = document.querySelectorAll(`#${tag}`);
+        } else {
+            selector = document.querySelectorAll(`${tag}`);
+            return;
+        }
+        } else {
+            if (type === "class" || type === ".") {
             selector = document.querySelector(`.${tag}`);
         } else if (type === "id" || type === "#") {
             selector = document.querySelector(`#${tag}`);
         } else {
             selector = document.querySelector(`${tag}`);
             return;
+        }
         }
 
         // Error handling: Check if the selector found an element
@@ -31,7 +42,7 @@ BENTWI.utils.mappings = {
         }
 
         // Assign the found element to MAPPINGS under the specified alias
-        MAPPINGS[alias] = selector;
+        BENTWI.utils.mappings[alias] = selector;
         log("log", `Added '${tag}' with alias '${alias}' as new mapping!.`, "MAPPINGS");
     },
     
