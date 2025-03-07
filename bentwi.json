@@ -1,20 +1,20 @@
 {
-      overlay: {
-        artifact: "com.myname.overlays.myfirstoverlay",
-        name: "My first overlay",
-        width: 1920,
-        height: 1080,
+      "overlay": {
+        "artifact": "com.myname.overlays.myfirstoverlay",
+        "name": "My first overlay",
+        "width": 1920,
+        "height": 1080,
       },
   
-      connection: {
-        token: BENTWI.utils.getUrlParam("token"),
-        version: 1
+      "connection": {
+        "token": BENTWI.utils.getUrlParam("token"),
+        "version": 1
       },
   
-      preferences: {
-        auto_reconnect_on_connection_loss: true,
-        clear_console_on_bdk_load: true,
-        debug: true,
-        live_refresh_environment: true
-      },
-    }
+      "preferences": {
+        "auto_reconnect_on_connection_loss": true,
+        "clear_console_on_bdk_load": true,
+        "debug": true,
+        "live_refresh_environment": true
+      }
+}
